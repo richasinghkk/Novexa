@@ -1,21 +1,60 @@
 # 🚀 Novexa
 
-> AI-Powered Career & Learning Ecosystem
+> Build Skills. Track Growth. Achieve More.
 
-## 📌 Overview
+## 📖 About
 
-Novexa is an AI-powered platform designed to help students learn smarter, prepare for placements, improve resumes, track skills, and receive personalized career guidance using Machine Learning and Artificial Intelligence.
+Novexa is an AI-powered Career & Learning Ecosystem that helps students learn smarter, prepare for placements, improve resumes, receive personalized learning recommendations, and track their progress using Machine Learning and Artificial Intelligence.
 
-## 👨‍💻 Tech Stack
+---
 
+## ✨ Features
+
+- 🔐 Authentication
+- 📚 AI Personalized Learning
+- 🤖 AI Mentor
+- 📄 Resume Analyzer
+- 🎤 AI Mock Interview
+- 📈 Skill Analytics
+- 🎯 Placement Prediction
+- 📝 Study Planner
+- 🏆 Progress Dashboard
+- 👨‍💼 Admin Dashboard
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
 - React.js
+- Tailwind CSS
+
+### Backend
 - Node.js
 - Express.js
-- MongoDB
+
+### Machine Learning
 - Python
 - FastAPI
-- Scikit-Learn
+- Scikit-learn
 
-## 📅 Status
+### Database
+- MongoDB
 
-🚧 Currently Under Development
+---
+
+## 📂 Project Structure
+
+```text
+client/
+server/
+ml-service/
+docs/
+assets/
+```
+
+---
+
+## 🚧 Status
+
+Project is under active development.
