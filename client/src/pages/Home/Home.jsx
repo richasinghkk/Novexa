@@ -1,8 +1,12 @@
+import Hero from "../../components/hero/Hero";
+import Features from "../../components/features/Features";
+
 function Home() {
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+    <>
+      <Hero />
+      <Features />
+    </>
   );
 }
 
