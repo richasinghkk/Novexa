@@ -1,8 +1,11 @@
+import Home from "./pages/Home/Home";
+import MainLayout from "./layouts/MainLayout";
+
 function App() {
   return (
-    <>
-      <h1>Welcome to Novexa 🚀</h1>
-    </>
+    <MainLayout>
+      <Home />
+    </MainLayout>
   );
 }
 
