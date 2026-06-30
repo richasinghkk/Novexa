@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import API from "../../services/api";
@@ -7,12 +7,23 @@ function Login() {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
+  // ================= Redirect if Already Logged In =================
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
+
+  // ================= Handle Input Change =================
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -20,27 +31,38 @@ function Login() {
     });
   };
 
+  // ================= Login =================
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!formData.email || !formData.password) {
+      toast.error("Please fill all fields.");
+      return;
+    }
+
     try {
+      setLoading(true);
+
       const { data } = await API.post("/auth/login", formData);
 
       if (data.success) {
-        toast.success(data.message);
-
-        // Store JWT Token
         localStorage.setItem("token", data.token);
+        localStorage.setItem(
+          "user",
+          JSON.stringify(data.user)
+        );
 
-        // Store User
-        localStorage.setItem("user", JSON.stringify(data.user));
+        toast.success(data.message);
 
         navigate("/dashboard");
       }
+
     } catch (error) {
       toast.error(
         error.response?.data?.message || "Login Failed"
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,6 +81,7 @@ function Login() {
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-5">
 
+          {/* Email */}
           <div>
             <label className="text-white">Email</label>
 
@@ -72,6 +95,7 @@ function Login() {
             />
           </div>
 
+          {/* Password */}
           <div>
             <label className="text-white">Password</label>
 
@@ -97,11 +121,13 @@ function Login() {
             </div>
           </div>
 
+          {/* Login Button */}
           <button
             type="submit"
-            className="w-full bg-cyan-500 hover:bg-cyan-600 transition p-3 rounded-lg text-white font-semibold"
+            disabled={loading}
+            className="w-full bg-cyan-500 hover:bg-cyan-600 transition p-3 rounded-lg text-white font-semibold disabled:opacity-50"
           >
-            Login
+            {loading ? "Logging In..." : "Login"}
           </button>
 
         </form>

@@ -1,78 +1,117 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 import {
   FaHome,
-  FaUserGraduate,
-  FaRobot,
+  FaUser,
   FaFileAlt,
+  FaHistory,
+  FaRobot,
+  FaUserGraduate,
   FaChartLine,
   FaCog,
 } from "react-icons/fa";
 
 function Sidebar() {
+  const menuItems = [
+    {
+      name: "Dashboard",
+      icon: <FaHome />,
+      path: "/dashboard",
+    },
+    {
+      name: "My Profile",
+      icon: <FaUser />,
+      path: "/profile",
+    },
+    {
+      name: "Resume Analyzer",
+      icon: <FaFileAlt />,
+      path: "/resume-analyzer",
+    },
+    {
+      name: "Resume History",
+      icon: <FaHistory />,
+      path: "/resume-history",
+    },
+    {
+      name: "AI Mentor",
+      icon: <FaRobot />,
+      path: "/ai-mentor",
+    },
+    {
+      name: "Mock Interview",
+      icon: <FaUserGraduate />,
+      path: "/mock-interview",
+    },
+    {
+      name: "Placement Predictor",
+      icon: <FaChartLine />,
+      path: "/placement-predictor",
+    },
+    {
+      name: "Settings",
+      icon: <FaCog />,
+      path: "/settings",
+    },
+  ];
+
   return (
-    <div className="w-72 h-screen bg-[#111827] text-white flex flex-col">
+    <div className="w-72 min-h-screen bg-[#111827] text-white flex flex-col shadow-2xl">
 
       {/* Logo */}
       <div className="p-6 border-b border-gray-700">
+
         <h1 className="text-3xl font-bold text-cyan-400">
           Novexa
         </h1>
 
         <p className="text-gray-400 text-sm mt-2">
-          AI Learning Platform
+          AI Powered Career Platform
         </p>
+
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-6">
+      <nav className="flex-1 p-5">
 
-        <ul className="space-y-5">
+        <ul className="space-y-3">
 
-          <Link to="/dashboard">
-            <li className="flex items-center gap-4 hover:text-cyan-400 cursor-pointer transition">
-              <FaHome />
-              Dashboard
+          {menuItems.map((item) => (
+            <li key={item.path}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) =>
+                  `flex items-center gap-4 p-3 rounded-xl transition-all duration-300 ${
+                    isActive
+                      ? "bg-cyan-500 text-white shadow-lg"
+                      : "hover:bg-cyan-500 hover:text-white"
+                  }`
+                }
+              >
+                <span className="text-lg">
+                  {item.icon}
+                </span>
+
+                <span className="font-medium">
+                  {item.name}
+                </span>
+              </NavLink>
             </li>
-          </Link>
-
-          <Link to="/resume-analyzer">
-            <li className="flex items-center gap-4 hover:text-cyan-400 cursor-pointer transition">
-              <FaFileAlt />
-              Resume Analyzer
-            </li>
-          </Link>
-
-          <Link to="/ai-mentor">
-            <li className="flex items-center gap-4 hover:text-cyan-400 cursor-pointer transition">
-              <FaRobot />
-              AI Mentor
-            </li>
-          </Link>
-
-          <Link to="/mock-interview">
-            <li className="flex items-center gap-4 hover:text-cyan-400 cursor-pointer transition">
-              <FaUserGraduate />
-              Mock Interview
-            </li>
-          </Link>
-
-          <Link to="/placement-predictor">
-            <li className="flex items-center gap-4 hover:text-cyan-400 cursor-pointer transition">
-              <FaChartLine />
-              Placement Predictor
-            </li>
-          </Link>
-
-          <Link to="/settings">
-            <li className="flex items-center gap-4 hover:text-cyan-400 cursor-pointer transition">
-              <FaCog />
-              Settings
-            </li>
-          </Link>
+          ))}
 
         </ul>
 
       </nav>
+
+      {/* Footer */}
+      <div className="p-5 border-t border-gray-700">
+
+        <p className="text-center text-gray-400 text-sm">
+          Novexa v1.0
+        </p>
+
+      </div>
+
     </div>
   );
 }

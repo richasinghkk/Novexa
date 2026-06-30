@@ -6,7 +6,6 @@ const resumeRoutes = require("./routes/resumeRoutes");
 const aiRoutes = require("./routes/aiRoutes");
 const interviewRoutes = require("./routes/interviewRoutes");
 const placementRoutes = require("./routes/placementRoutes");
-const profileRoutes = require("./routes/profileRoutes");
 
 const app = express();
 
@@ -22,12 +21,11 @@ app.get("/", (req, res) => {
   });
 });
 
-// ================= API Routes =================
+// ================= Routes =================
 app.use("/api/auth", authRoutes);
 app.use("/api/resume", resumeRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/interview", interviewRoutes);
 app.use("/api/placement", placementRoutes);
-app.use("/api/profile", profileRoutes);
 
 module.exports = app;
