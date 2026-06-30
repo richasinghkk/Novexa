@@ -2,6 +2,8 @@ import { useState } from "react";
 import API from "../../services/api";
 import toast from "react-hot-toast";
 
+import BackButton from "../../components/common/BackButton";
+
 function MockInterview() {
   const [interviewType, setInterviewType] = useState("HR");
   const [question, setQuestion] = useState("");
@@ -72,6 +74,8 @@ function MockInterview() {
 
   return (
     <div className="min-h-screen bg-[#050816] p-10">
+
+      <BackButton />
 
       <h1 className="text-5xl font-bold text-cyan-400 mb-10">
         🎤 AI Mock Interview

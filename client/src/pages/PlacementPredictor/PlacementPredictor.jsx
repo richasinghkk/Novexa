@@ -2,6 +2,8 @@ import { useState } from "react";
 import API from "../../services/api";
 import toast from "react-hot-toast";
 
+import BackButton from "../../components/common/BackButton";
+
 function PlacementPredictor() {
   const [formData, setFormData] = useState({
     cgpa: "",
@@ -48,6 +50,8 @@ function PlacementPredictor() {
   return (
     <div className="min-h-screen bg-[#050816] p-10">
 
+      <BackButton />
+
       <h1 className="text-5xl font-bold text-cyan-400 mb-10">
         📈 Placement Predictor
       </h1>
@@ -77,7 +81,7 @@ function PlacementPredictor() {
           <input
             type="number"
             name="projects"
-            placeholder="Projects"
+            placeholder="Number of Projects"
             value={formData.projects}
             onChange={handleChange}
             className="p-4 rounded-xl bg-[#1F2937] text-white outline-none"
@@ -115,7 +119,7 @@ function PlacementPredictor() {
         <button
           onClick={predictPlacement}
           disabled={loading}
-          className="mt-8 bg-cyan-500 hover:bg-cyan-600 px-8 py-3 rounded-xl text-white transition disabled:opacity-50"
+          className="mt-8 bg-cyan-500 hover:bg-cyan-600 px-8 py-3 rounded-xl text-white font-semibold transition disabled:opacity-50"
         >
           {loading ? "Predicting..." : "Predict Placement"}
         </button>
@@ -136,7 +140,7 @@ function PlacementPredictor() {
             </span>
           </p>
 
-          <p className="text-white text-xl">
+          <p className="text-white text-xl font-semibold">
             Recommendation:
           </p>
 

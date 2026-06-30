@@ -8,12 +8,14 @@ function Topbar() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
+    // Remove stored data
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    toast.success("Logged out successfully");
+    toast.success("Logged out successfully 👋");
 
-    navigate("/login");
+    // Redirect to Landing Page
+    navigate("/");
   };
 
   return (

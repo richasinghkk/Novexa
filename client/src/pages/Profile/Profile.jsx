@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
+import BackButton from "../../components/common/BackButton";
+
 function Profile() {
   const [user, setUser] = useState(null);
 
@@ -16,6 +18,8 @@ function Profile() {
 
   return (
     <div className="min-h-screen bg-[#050816] p-10">
+
+      <BackButton />
 
       <h1 className="text-5xl font-bold text-cyan-400 mb-10">
         👤 My Profile

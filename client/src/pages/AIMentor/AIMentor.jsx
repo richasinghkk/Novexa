@@ -2,6 +2,8 @@ import { useState } from "react";
 import API from "../../services/api";
 import toast from "react-hot-toast";
 
+import BackButton from "../../components/common/BackButton";
+
 function AIMentor() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -34,6 +36,8 @@ function AIMentor() {
   return (
     <div className="min-h-screen bg-[#050816] p-10">
 
+      <BackButton />
+
       <h1 className="text-5xl font-bold text-cyan-400 mb-8">
         🤖 AI Mentor
       </h1>
@@ -44,7 +48,7 @@ function AIMentor() {
           rows={6}
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          placeholder="Ask me anything about coding, placements, DSA, resume, or career..."
+          placeholder="Ask me anything about Coding, Placements, DSA, Resume, Career, MERN Stack or AI..."
           className="w-full bg-[#1F2937] text-white rounded-xl p-4 outline-none resize-none"
         />
 
